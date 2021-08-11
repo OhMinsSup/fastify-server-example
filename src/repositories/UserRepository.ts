@@ -1,20 +1,25 @@
+import {} from '@mikro-orm/core'
 import { DI } from 'app'
 import { User } from 'entities'
-
-export interface FindAllUsersParams {
-  pageNo: number
-  limit: number
-}
+import { ListParams } from 'services/UserService'
 
 class UserRepository {
-  public static async findAllUsers(params: FindAllUsersParams) {
+  public static async findAllUsers(params: ListParams) {
     const { pageNo, limit } = params
 
     const skip = (pageNo - 1) * limit
     try {
       const [users, count] = await DI.em.findAndCount(
         User,
-        {},
+        params.username
+          ? {
+              profile: {
+                username: {
+                  $like: params.username,
+                },
+              },
+            }
+          : {},
         {
           offset: skip,
           limit: limit,
@@ -29,7 +34,7 @@ class UserRepository {
         users,
         totalCount: count,
         currentPageNo: pageNo,
-        nextPageNo: pageNo + 1,
+        nextPageNo: limit > users.length ? pageNo : pageNo + 1,
       }
     } catch (error) {
       console.error(error)
