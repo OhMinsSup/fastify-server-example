@@ -13,4 +13,6 @@ export const RESULT_CODE = {
   INVALID: 2004,
   // 만료된 토큰
   TOKEN_EXPIRED: 4001,
+  //유저 정보 없음
+  NOT_AUTHORIZED: 4002,
 }

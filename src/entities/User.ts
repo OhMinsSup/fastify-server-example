@@ -8,9 +8,8 @@ import {
   wrap,
 } from '@mikro-orm/core'
 import * as bcrypt from 'bcrypt'
+import { BaseEntity, UserProfile } from 'entities'
 import { generateToken } from '../libs/tokens'
-import { BaseEntity } from './BaseEntity'
-import { UserProfile } from './UserProfile'
 
 @Entity()
 export class User extends BaseEntity {

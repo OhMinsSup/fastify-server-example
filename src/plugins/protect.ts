@@ -21,6 +21,7 @@ declare module 'fastify' {
 
 const callback: FastifyPluginCallback = async (fastify, opts, done) => {
   fastify.decorateRequest('user', null)
+
   fastify.addHook('preHandler', async (request, reply) => {
     if (request.routerPath.includes('/auth/logout')) {
       return
@@ -51,8 +52,8 @@ const callback: FastifyPluginCallback = async (fastify, opts, done) => {
   done()
 }
 
-const jwtPlugin = fp(callback, {
-  name: 'jwtPlugin',
+const protect = fp(callback, {
+  name: 'protect',
 })
 
-export default jwtPlugin
+export default protect

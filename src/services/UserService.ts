@@ -1,6 +1,4 @@
-import { FilterQuery } from '@mikro-orm/core'
 import { RESULT_CODE } from 'constants/constant'
-import { User } from 'entities'
 import { StatusCodes } from 'http-status-codes'
 import UserRepository from 'repositories/UserRepository'
 

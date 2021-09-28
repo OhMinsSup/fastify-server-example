@@ -1,4 +1,5 @@
 export * from './User'
 export * from './UserProfile'
 export * from './Pick'
+export * from './PickPlace'
 export * from './BaseEntity'

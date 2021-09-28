@@ -8,8 +8,7 @@ import {
   Property,
   wrap,
 } from '@mikro-orm/core'
-import { BaseEntity } from './BaseEntity'
-import { User } from './User'
+import { BaseEntity, User } from 'entities'
 
 export type SocialLink = {
   [key: string]: string

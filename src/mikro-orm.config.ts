@@ -1,10 +1,10 @@
 import { Options } from '@mikro-orm/core'
 import { SqlHighlighter } from '@mikro-orm/sql-highlighter'
-import { User, UserProfile, Pick, BaseEntity } from './entities'
+import { User, UserProfile, Pick, BaseEntity, Place } from './entities'
 
 const options: Options = {
   type: 'mariadb',
-  entities: [User, UserProfile, Pick, BaseEntity],
+  entities: [User, UserProfile, Pick, Place, BaseEntity],
   dbName: process.env.DB_DATABASE,
   debug: true,
   highlighter: new SqlHighlighter(),
